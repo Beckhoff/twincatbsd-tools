@@ -6,7 +6,18 @@ On Linux and TwinCAT/BSD itself you can use wget instead:
 
     wget --recursive --timestamping --level=inf --no-cache --no-parent --no-cookies --no-host-directories --relative --directory-prefix /tmp/mirror https://tcbsd.beckhoff.com/TCBSD/13/stable/packages/
 
-## Install
+## Use without persistent installation
+
+If you just want to test it or if you just need it once you can just temporarily import the powershell module into your powershell session.
+To do so you just need to use the Import-Module cmdlet.
+
+    Import-Module -Name C:\{Path to Module}\Backup-TCBSDRepo
+
+You only reference to the folder not to the file inside the folder.
+The whole Backup-TCBSDRepo folder is the module.
+After this import you can Use the module ([see below](#usage))
+
+## Install persistently
 
 the easiest way is to install the cmdlet persistently on your system. In this way you can always use the cmdlet as all they standard cmdlet from the powershell.
 To install the module manually you need to execute the following steps:
