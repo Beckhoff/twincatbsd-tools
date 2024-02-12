@@ -42,6 +42,6 @@ To install the module manually you need to execute the following steps:
 
 To download a TwinCAT/BSD repository just call the powershell cmdlet
 
-    Backup-TCBSDRepo -Url "https://tcbsd.beckhoff.com/TCBSD/13/stable/" -OutputPath "C:\tcbsd\repository"
+    Backup-TCBSDRepo -Url "https://tcbsd.beckhoff.com/TCBSD/13/stable/" -OutputPath "C:\tcbsd\repository\"
 
 This may take some time as the repository is a couple of gigabytes in size.
