@@ -32,6 +32,9 @@ function Backup-TCBSDRepo {
         [ValidateScript({Test-Path $_})]
         [string]$OutputPath
     )
+    if(!$OutputPath.EndsWith('\')){
+        $OutputPath = $OutputPath + '\'
+    }
     Download-Repofiles -DownloadUrl $Url -DownloadPath $OutputPath
 }
 
