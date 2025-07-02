@@ -19,7 +19,7 @@
 
  .Example
   # Download repo.
-  Backup-TCBSDRepo -Url "https://tcbsd.beckhoff.com/TCBSD/13/stable/" -OutputPath "C:\tcbsd\repository"
+  Backup-TCBSDRepo -Url "https://tcbsd.beckhoff.com/TCBSD/13/stable/" -OutputPath "C:\tcbsd\repository\"
 #>
 
 function Backup-TCBSDRepo {
