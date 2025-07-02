@@ -40,10 +40,10 @@ function Download-Repofiles {
     Param ([string] $DownloadUrl, [string] $DownloadPath)
     $indexhtml = Invoke-WebRequest -Uri $DownloadUrl -UseBasicParsing
     foreach ($link in $indexhtml.Links){
-        if (($link.href -like "*.*") -and ($link.href -notlike "*../")){
+        if (($link.href -like "*.*") -and ($link.href -notlike "*/") -and ($link.href -notlike "http*")){
             Write-Host ("Downloading: " + $DownloadUrl + $link.href)
             Start-BitsTransfer -Source ($DownloadUrl + $link.href) -Destination ($DownloadPath + $link.href.Replace('/', '\'))
-        } elseif ($link.href -notlike "*../"){
+        } elseif (($link.href -notlike "*../")  -and ($link.href -notlike "http*")){
             New-Item -ItemType Directory -Force -Path ($DownloadPath + $link.href.Replace('/', '\'))
             Download-Repofiles -DownloadUrl ($DownloadUrl + $link.href) -DownloadPath ($DownloadPath + $link.href.Replace('/', '\'))
         }
