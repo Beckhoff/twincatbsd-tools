@@ -32,20 +32,29 @@ function Backup-TCBSDRepo {
         [ValidateScript({Test-Path $_})]
         [string]$OutputPath
     )
-    Download-Repofiles -DownloadUrl $Url -DownloadPath $OutputPath
+    try {
+        $indexhtml = Invoke-WebRequest -Uri $Url -UseBasicParsing
+    } catch {
+        if ($_.Exception.Message.Contains("401")) {
+            $credentials = Get-Credential -Message "Please enter your myBeckhoff credentials:"
+        } else {
+            return $_.Exception.Message
+        }
+    }
+    Download-Repofiles -DownloadUrl $Url -DownloadPath $OutputPath -Credentials $credentials
 }
 
 
 function Download-Repofiles {
-    Param ([string] $DownloadUrl, [string] $DownloadPath)
-    $indexhtml = Invoke-WebRequest -Uri $DownloadUrl -UseBasicParsing
+    Param ([string] $DownloadUrl, [string] $DownloadPath, [pscredential] $Credentials)
+    $indexhtml = Invoke-WebRequest -Credential $Credentials -Uri $DownloadUrl -UseBasicParsing
     foreach ($link in $indexhtml.Links){
         if (($link.href -like "*.*") -and ($link.href -notlike "*/") -and ($link.href -notlike "http*")){
             Write-Host ("Downloading: " + $DownloadUrl + $link.href)
-            Start-BitsTransfer -Source ($DownloadUrl + $link.href) -Destination ($DownloadPath + $link.href.Replace('/', '\'))
+            Start-BitsTransfer -Authentication Basic -Credential $Credentials -Source ($DownloadUrl + $link.href) -Destination ($DownloadPath + $link.href.Replace('/', '\'))
         } elseif (($link.href -notlike "*../")  -and ($link.href -notlike "http*")){
             New-Item -ItemType Directory -Force -Path ($DownloadPath + $link.href.Replace('/', '\'))
-            Download-Repofiles -DownloadUrl ($DownloadUrl + $link.href) -DownloadPath ($DownloadPath + $link.href.Replace('/', '\'))
+            Download-Repofiles -DownloadUrl ($DownloadUrl + $link.href) -DownloadPath ($DownloadPath + $link.href.Replace('/', '\')) -Credentials $Credentials
         }
     }
 }
