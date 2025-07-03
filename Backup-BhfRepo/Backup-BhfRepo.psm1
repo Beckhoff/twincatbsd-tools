@@ -1,28 +1,31 @@
 ﻿# SPDX-License-Identifier: 0BSD
-# Copyright (c) 2022 Beckhoff Automation GmbH & Co. KG
+# Copyright (c) 2025 Beckhoff Automation GmbH & Co. KG
 
 <#
  .Synopsis
-  Download the TwinCAT/BSD Repository to the local file system.
+  Download an online Repository to the local file system.
 
  .Description
-  Download the TwinCAT/BSD Repository to the local file system.
-  This is helpful in case you want to setup your own internal package server. 
+  Download an online Repository to the local file system.
+  This is helpful in case you want to setup your own internal package server
+  or create an USB Stick for offline update.
  
  .Parameter Url
-  The Url of the TwinCAT/BSD repository server.
+  The Url of the online repository server.
   Usually it should be something like this:
   https://tcbsd.beckhoff.com/TCBSD/13/stable/packages/
+  or 
+  https://deb.beckhoff.com/
 
  .Parameter OutputPath
-  The path where to save the TwinCAT/BSD repository.
+  The path where to save the repository.
 
  .Example
   # Download repo.
-  Backup-TCBSDRepo -Url "https://tcbsd.beckhoff.com/TCBSD/13/stable/" -OutputPath "C:\tcbsd\repository\"
+  Backup-BhfRepo -Url "https://tcbsd.beckhoff.com/TCBSD/13/stable/" -OutputPath "C:\tcbsd\repository\"
 #>
 
-function Backup-TCBSDRepo {
+function Backup-BhfRepo {
     param(
         [parameter(Mandatory=$true)]
         [ValidatePattern('([a-zA-Z]{3,})://([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:/~+#-]*[\w@?^=%&/~+#-])?')]
@@ -59,4 +62,4 @@ function Download-Repofiles {
     }
 }
 
-Export-ModuleMember -Function Backup-TCBSDRepo
+Export-ModuleMember -Function Backup-BhfRepo

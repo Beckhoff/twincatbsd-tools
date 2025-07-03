@@ -5,6 +5,6 @@ for TwinCAT/BSD.
 
 ## Content
 
-* **[Backup-TCBSDRepo](Backup-TCBSDRepo/Readme.md)**
+* **[Backup-BhfRepo](Backup-BhfRepo/Readme.md)**
 
-  This is a Powershell cmdlet to download the TwinCAT/BSD repository to your local windows system
+  This is a Powershell cmdlet to download a Beckhoff online repository to your local windows system
