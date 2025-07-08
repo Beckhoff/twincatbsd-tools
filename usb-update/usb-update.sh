@@ -70,13 +70,13 @@ if [ "$OS" = "Linux" ]; then
     # Add temporary repository
     echo "Adding temporary repository..."
     if [ -d "$MOUNT_POINT/$DEB_REPO" ]; then
-    	echo "deb [trusted=yes] file://$MOUNT_POINT/$DEB_REPO/debian bookworm-unstable main" > "$REPO_FILE"
+    	echo "deb [signed-by=/usr/share/keyrings/bhf.asc] file://$MOUNT_POINT/$DEB_REPO/debian bookworm-unstable main" > "$REPO_FILE"
     else
 	echo "Could not find repo directory: $MOUNT_POINT/$DEB_REPO/debian"
         exit 1
     fi
     if [ -d "$MOUNT_POINT/$DEB_REPO" ]; then
-	echo "deb [trusted=yes] file://$MOUNT_POINT/$DEB_MIRROR_REPO/debian bookworm-unstable main" >> "$REPO_FILE"
+	echo "deb [signed-by=/usr/share/keyrings/bhf.asc] file://$MOUNT_POINT/$DEB_MIRROR_REPO/debian bookworm-unstable main" >> "$REPO_FILE"
     else
 	echo "Could not find repo directory: $MOUNT_POINT/$DEB_REPO"
 	exit 1
