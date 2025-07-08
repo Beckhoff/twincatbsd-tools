@@ -52,7 +52,7 @@ function Download-Repofiles {
     Param ([string] $DownloadUrl, [string] $DownloadPath, [pscredential] $Credentials)
     $indexhtml = Invoke-WebRequest -Credential $Credentials -Uri $DownloadUrl -UseBasicParsing
     foreach ($link in $indexhtml.Links){
-        if (($link.href -like "*.*") -and ($link.href -notlike "*/") -and ($link.href -notlike "http*")){
+        if (($link.href -notlike "*/") -and ($link.href -notlike "http*")){
             Write-Host ("Downloading: " + $DownloadUrl + $link.href)
             Start-BitsTransfer -Authentication Basic -Credential $Credentials -Source ($DownloadUrl + $link.href) -Destination ($DownloadPath + $link.href.Replace('/', '\'))
         } elseif (($link.href -notlike "*../")  -and ($link.href -notlike "http*")){
