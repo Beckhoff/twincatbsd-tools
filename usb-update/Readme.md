@@ -13,11 +13,11 @@ wget --recursive --timestamping --level=inf --no-cache --no-parent --no-cookies 
 
 ## TwinCAT/BSD
 
-Download the repository to your USB drive:
+Download the repository to your USB drive using the above mentioned Powershell script or the wget command.
 
 https://tcbsd.beckhoff.com/TCBSD/14/stable/packages/ --> {USB drive}/**tcbsd**/
 
-Thereafter you can insert the USB drive into your device and run the script with the device name of the usb drive as parameter e.g.:
+Thereafter you can insert the USB drive into your device and run the ```usb-update.sh``` script with the device name of the usb drive as parameter e.g.:
 
 ```
 doas ./usb-update.sh /dev/da0s1
@@ -46,13 +46,13 @@ Administrator@CX-0C8432:~ $
 
 ## Beckhoff RT Linux
 
-Download the repositories to your USB drive:
+Download the repository to your USB drive using the above mentioned Powershell script or the wget command.
 
 https://deb.beckhoff.com --> {USB drive}/**deb**/
 
 https://deb-mirror.beckhoff.com --> {USB drive}/**deb-mirror**/
 
-Thereafter you can insert the USB drive into your device and run the script with the device name of the usb drive as parameter e.g.:
+Thereafter you can insert the USB drive into your device and run the ```usb-update.sh``` script with the device name of the usb drive as parameter e.g.:
 
 ```
 sudo ./usb-update.sh /dev/sda1
