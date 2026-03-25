@@ -4,7 +4,7 @@ This Powershell module downloads a Beckhoff online repository (e.g. TwinCAT/BSD 
 It is mainly intended to be used on windows.
 On Linux and TwinCAT/BSD itself you can use wget instead:
 
-    wget --recursive --timestamping --level=inf --no-cache --no-parent --no-cookies --no-host-directories --relative --directory-prefix /tmp/mirror https://tcbsd.beckhoff.com/TCBSD/13/stable/packages/
+    wget --recursive --timestamping --level=inf --no-cache --no-parent --no-cookies --no-host-directories --relative --directory-prefix /tmp/mirror https://tcbsd.beckhoff.com/TCBSD/14/stable/packages/
 
 ## Use without persistent installation
 
@@ -42,7 +42,7 @@ To install the module manually you need to execute the following steps:
 
 To download a TwinCAT/BSD repository just call the powershell cmdlet
 
-    Backup-BhfRepo -Url "https://tcbsd.beckhoff.com/TCBSD/13/stable/" -OutputPath "C:\tcbsd\repository\"
+    Backup-BhfRepo -Url "https://tcbsd.beckhoff.com/TCBSD/14/stable/" -OutputPath "C:\tcbsd\repository\"
 
 This may take some time as the repository is a couple of gigabytes in size.
 If the package server requires http Basic authentication you will be asked for your credentials.
