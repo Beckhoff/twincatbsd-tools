@@ -13,7 +13,7 @@
  .Parameter Url
   The Url of the online repository server.
   Usually it should be something like this:
-  https://tcbsd.beckhoff.com/TCBSD/13/stable/packages/
+  https://tcbsd.beckhoff.com/TCBSD/14/stable/packages/
   or 
   https://deb.beckhoff.com/
 
@@ -22,7 +22,7 @@
 
  .Example
   # Download repo.
-  Backup-BhfRepo -Url "https://tcbsd.beckhoff.com/TCBSD/13/stable/" -OutputPath "C:\tcbsd\repository\"
+  Backup-BhfRepo -Url "https://tcbsd.beckhoff.com/TCBSD/14/stable/" -OutputPath "C:\tcbsd\repository\"
 #>
 
 function Backup-BhfRepo {
